@@ -1,0 +1,19 @@
+version: "3.6"
+
+networks:
+  myNetwork:
+volumes:
+  postgres_volume:
+
+services:
+  postgres:
+    image: postgres:13-alpine
+    container_name: postgres-ctn
+    volumes:
+      - postgres_volume:/var/lib/postgresql/data
+    networks:
+      - myNetwork
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: postgres
